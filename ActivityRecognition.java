@@ -9,7 +9,6 @@ public class ActivityRecognition {
            int nblignes = 0;
            while(scanner.hasNext())
            {
-               //System.out.println("counting"+(nblignes+1)+" lignes");
                scanner.next();
                nblignes++;
            }
@@ -28,7 +27,7 @@ public class ActivityRecognition {
                 System.out.println("Ligne number "+(nblignes+1)+": ");
                 //System.out.println(Arrays.asList(columns));
                 data[nblignes] = new ArrayList(Arrays.asList(columns));
-                System.out.println(data[nblignes]);        
+                System.out.println(data[nblignes]);
                 nblignes++;
             }
         }
@@ -40,7 +39,7 @@ public class ActivityRecognition {
         //FUNCTION THAT GENERATES THE 27 DIRECTION VECTORS USING THE COORDINATE GIVE AS INPUT
         public static Double[][] generateDirectionVectors(Double x, Double y, Double z)
         {
-          Double directionVectors[][]=new Double[27][3]; 
+          Double directionVectors[][]=new Double[27][3];
             directionVectors[0][0] = 0.0;
             directionVectors[0][1] = 0.0;
             directionVectors[0][2] = 0.005;
@@ -140,10 +139,10 @@ public class ActivityRecognition {
             }
             return minq;
         }
-        
+
     public static void main(String[] args) throws FileNotFoundException, IOException
     {
-        File file = new File("/Users/mac/NetBeansProjects/ActivityRecognition/src/dataset.csv"); 
+        File file = new File("/Users/mac/NetBeansProjects/ActivityRecognition/src/dataset.csv");
 
         ArrayList<String>[] data = new ArrayList[nbLignesInCsv(file)] ;
 
@@ -703,7 +702,7 @@ public class ActivityRecognition {
             Double dv3[][] = generateDirectionVectors(Double.parseDouble(data[cpt].get(RH_X_3)),Double.parseDouble(data[cpt].get(RH_Y_3)),Double.parseDouble(data[cpt].get(RH_Z_3)));
             int h[] = new int[27] ;
             int q = 0;
-            //CALCULATING THE DIRECTION VECTORS OF JOINT RH 
+            //CALCULATING THE DIRECTION VECTORS OF JOINT RH
             Double RH_V1_X = Double.parseDouble(data[cpt].get(RH_X_2))-Double.parseDouble(data[cpt].get(RH_X_1));
             Double RH_V1_Y = Double.parseDouble(data[cpt].get(RH_Y_2))-Double.parseDouble(data[cpt].get(RH_Y_1));
             Double RH_V1_Z = Double.parseDouble(data[cpt].get(RH_Z_2))-Double.parseDouble(data[cpt].get(RH_Z_1));
@@ -724,11 +723,11 @@ public class ActivityRecognition {
                System.out.println("h["+j+"] == : "+h[j]);
             }
             H[0]=h;
-//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####      
+//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
             //GENERATING 27 PRIMARY DIRECTION VECTORS COORDINATES FOR EACH FRAME
             dv1 = generateDirectionVectors(Double.parseDouble(data[cpt].get(LH_X_1)),Double.parseDouble(data[cpt].get(LH_Y_1)),Double.parseDouble(data[cpt].get(LH_Z_1)));
             dv2 = generateDirectionVectors(Double.parseDouble(data[cpt].get(LH_X_2)),Double.parseDouble(data[cpt].get(LH_Y_2)),Double.parseDouble(data[cpt].get(LH_Z_2)));
-            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(LH_X_3)),Double.parseDouble(data[cpt].get(LH_Y_3)),Double.parseDouble(data[cpt].get(LH_Z_3)));      
+            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(LH_X_3)),Double.parseDouble(data[cpt].get(LH_Y_3)),Double.parseDouble(data[cpt].get(LH_Z_3)));
             h= new int[27] ;
             q=0;
             //CALCULATING THE DIRECTION VECTORS OF JOINT LH
@@ -754,11 +753,11 @@ public class ActivityRecognition {
                System.out.println("h["+j+"] == : "+h[j]);
             }
             H[1]=h;
-//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####     
+//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
             //GENERATING 27 PRIMARY DIRECTION VECTORS COORDINATES FOR EACH FRAME
             dv1 = generateDirectionVectors(Double.parseDouble(data[cpt].get(TS_X_1)),Double.parseDouble(data[cpt].get(TS_Y_1)),Double.parseDouble(data[cpt].get(TS_Z_1)));
             dv2 = generateDirectionVectors(Double.parseDouble(data[cpt].get(TS_X_2)),Double.parseDouble(data[cpt].get(TS_Y_2)),Double.parseDouble(data[cpt].get(TS_Z_2)));
-            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(TS_X_3)),Double.parseDouble(data[cpt].get(TS_Y_3)),Double.parseDouble(data[cpt].get(TS_Z_3)));      
+            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(TS_X_3)),Double.parseDouble(data[cpt].get(TS_Y_3)),Double.parseDouble(data[cpt].get(TS_Z_3)));
             h= new int[27] ;
             q=0;
             //CALCULATING THE DIRECTION VECTORS OF JOINT TS
@@ -783,11 +782,11 @@ public class ActivityRecognition {
                 System.out.println("h["+j+"] == : "+h[j]);
             }
             H[2]=h;
-//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####     
+//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
             //GENERATING 27 PRIMARY DIRECTION VECTORS COORDINATES FOR EACH FRAME
             dv1 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Relw_X_1)),Double.parseDouble(data[cpt].get(Relw_Y_1)),Double.parseDouble(data[cpt].get(Relw_Z_1)));
             dv2 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Relw_X_2)),Double.parseDouble(data[cpt].get(Relw_Y_2)),Double.parseDouble(data[cpt].get(Relw_Z_2)));
-            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Relw_X_3)),Double.parseDouble(data[cpt].get(Relw_Y_3)),Double.parseDouble(data[cpt].get(Relw_Z_3)));      
+            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Relw_X_3)),Double.parseDouble(data[cpt].get(Relw_Y_3)),Double.parseDouble(data[cpt].get(Relw_Z_3)));
             h= new int[27] ;
             q=0;
             //CALCULATING THE DIRECTION VECTORS OF JOINT Relw
@@ -812,11 +811,11 @@ public class ActivityRecognition {
                 System.out.println("h["+j+"] == : "+h[j]);
             }
             H[3]=h;
-//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####        
+//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
             //GENERATING 27 PRIMARY DIRECTION VECTORS COORDINATES FOR EACH FRAME
             dv1 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Lelm_X_1)),Double.parseDouble(data[cpt].get(Lelm_Y_1)),Double.parseDouble(data[cpt].get(Lelm_Z_1)));
             dv2 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Lelm_X_2)),Double.parseDouble(data[cpt].get(Lelm_Y_2)),Double.parseDouble(data[cpt].get(Lelm_Z_2)));
-            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Lelm_X_3)),Double.parseDouble(data[cpt].get(Lelm_Y_3)),Double.parseDouble(data[cpt].get(Lelm_Z_3)));      
+            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Lelm_X_3)),Double.parseDouble(data[cpt].get(Lelm_Y_3)),Double.parseDouble(data[cpt].get(Lelm_Z_3)));
             h= new int[27] ;
             q=0;
             //CALCULATING THE DIRECTION VECTORS OF JOINT Lelm
@@ -841,11 +840,11 @@ public class ActivityRecognition {
                 System.out.println("h["+j+"] == : "+h[j]);
             }
             H[4]=h;
-//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####       
+//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
             //GENERATING 27 PRIMARY DIRECTION VECTORS COORDINATES FOR EACH FRAME
             dv1 = generateDirectionVectors(Double.parseDouble(data[cpt].get(head_X_1)),Double.parseDouble(data[cpt].get(head_Y_1)),Double.parseDouble(data[cpt].get(head_Z_1)));
             dv2 = generateDirectionVectors(Double.parseDouble(data[cpt].get(head_X_2)),Double.parseDouble(data[cpt].get(head_Y_2)),Double.parseDouble(data[cpt].get(head_Z_2)));
-            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(head_X_3)),Double.parseDouble(data[cpt].get(head_Y_3)),Double.parseDouble(data[cpt].get(head_Z_3)));      
+            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(head_X_3)),Double.parseDouble(data[cpt].get(head_Y_3)),Double.parseDouble(data[cpt].get(head_Z_3)));
             h= new int[27] ;
             q=0;
             //CALCULATING THE DIRECTION VECTORS OF JOINT head
@@ -870,11 +869,11 @@ public class ActivityRecognition {
                System.out.println("h["+j+"] == : "+h[j]);
             }
             H[5]=h;
-//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####      
+//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
             //GENERATING 27 PRIMARY DIRECTION VECTORS COORDINATES FOR EACH FRAME
             dv1 = generateDirectionVectors(Double.parseDouble(data[cpt].get(neck_X_1)),Double.parseDouble(data[cpt].get(neck_Y_1)),Double.parseDouble(data[cpt].get(neck_Z_1)));
             dv2 = generateDirectionVectors(Double.parseDouble(data[cpt].get(neck_X_2)),Double.parseDouble(data[cpt].get(neck_Y_2)),Double.parseDouble(data[cpt].get(neck_Z_2)));
-            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(neck_X_3)),Double.parseDouble(data[cpt].get(neck_Y_3)),Double.parseDouble(data[cpt].get(neck_Z_3)));      
+            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(neck_X_3)),Double.parseDouble(data[cpt].get(neck_Y_3)),Double.parseDouble(data[cpt].get(neck_Z_3)));
             h= new int[27] ;
             q=0;
             //CALCULATING THE DIRECTION VECTORS OF JOINT neck
@@ -899,11 +898,11 @@ public class ActivityRecognition {
                System.out.println("h["+j+"] == : "+h[j]);
             }
             H[6]=h;
-//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####       
+//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
             //GENERATING 27 PRIMARY DIRECTION VECTORS COORDINATES FOR EACH FRAME
             dv1 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Lshdr_X_1)),Double.parseDouble(data[cpt].get(Lshdr_Y_1)),Double.parseDouble(data[cpt].get(Lshdr_Z_1)));
             dv2 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Lshdr_X_2)),Double.parseDouble(data[cpt].get(Lshdr_Y_2)),Double.parseDouble(data[cpt].get(Lshdr_Z_2)));
-            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Lshdr_X_3)),Double.parseDouble(data[cpt].get(Lshdr_Y_3)),Double.parseDouble(data[cpt].get(Lshdr_Z_3)));      
+            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Lshdr_X_3)),Double.parseDouble(data[cpt].get(Lshdr_Y_3)),Double.parseDouble(data[cpt].get(Lshdr_Z_3)));
             h= new int[27] ;
             q=0;
             //CALCULATING THE DIRECTION VECTORS OF JOINT Lshdr
@@ -928,11 +927,11 @@ public class ActivityRecognition {
                System.out.println("h["+j+"] == : "+h[j]);
             }
             H[7]=h;
-//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####       
+//###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
             //GENERATING 27 PRIMARY DIRECTION VECTORS COORDINATES FOR EACH FRAME
             dv1 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Rshdr_X_1)),Double.parseDouble(data[cpt].get(Rshdr_Y_1)),Double.parseDouble(data[cpt].get(Rshdr_Z_1)));
             dv2 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Rshdr_X_2)),Double.parseDouble(data[cpt].get(Rshdr_Y_2)),Double.parseDouble(data[cpt].get(Rshdr_Z_2)));
-            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Rshdr_X_3)),Double.parseDouble(data[cpt].get(Rshdr_Y_3)),Double.parseDouble(data[cpt].get(Rshdr_Z_3)));      
+            dv3 = generateDirectionVectors(Double.parseDouble(data[cpt].get(Rshdr_X_3)),Double.parseDouble(data[cpt].get(Rshdr_Y_3)),Double.parseDouble(data[cpt].get(Rshdr_Z_3)));
             h= new int[27] ;
             q=0;
             //CALCULATING THE DIRECTION VECTORS OF JOINT Rshdr
@@ -958,7 +957,7 @@ public class ActivityRecognition {
             }
             H[8]=h;
             //List<Double> rows = Arrays.asList(H[0]);
-            
+
             for(int[] rowData : H)
             {
                 for(int i : rowData)
@@ -995,6 +994,6 @@ public class ActivityRecognition {
        csvWriter.flush();
        csvWriter.close();
        System.out.println("histogramsOfDirections.csv Has been created succesfully");
- //###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####       
-    }  
+ //###########@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@###############@####
+    }
 }
